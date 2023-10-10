@@ -14,42 +14,42 @@ public:
 
     Complex(double r, double i) : real(r), imag(i) {}
 
-    double getReal() const 
+    const double getReal()
     {
         return real;
     }
 
-    double getImag() const 
+    const double getImag()
     {
         return imag;
     }
 
-    double abs() const 
+    const  double abs()
     {
         return sqrt(real * real + imag * imag);
     }
 
-    Complex conjugate() const 
+    const Complex conjugate()
     {
         return Complex(real, -imag);
     }
 
-    Complex operator+(const Complex& other) const 
+    const Complex operator+(const Complex& other)
     {
         return Complex(real + other.real, imag + other.imag);
     }
 
-    Complex operator-(const Complex& other) const
+    const Complex operator-(const Complex& other)
     {
         return Complex(real - other.real, imag - other.imag);
     }
 
-    Complex operator*(const Complex& other) const 
+    const Complex operator*(const Complex& other)
     {
         return Complex(real * other.real - imag * other.imag, real * other.imag + imag * other.real);
     }
 
-    Complex operator/(const Complex& other) const 
+    const Complex operator/(const Complex& other)
     {
         double denominator = other.real * other.real + other.imag * other.imag;
         if (denominator == 0) {
@@ -90,11 +90,11 @@ public:
         return *this;
     }
 
-    bool operator==(const Complex& other) const {
+    const bool operator==(const Complex& other)  {
         return (real == other.real && imag == other.imag);
     }
 
-    bool operator!=(const Complex& other) const {
+    const bool operator!=(const Complex& other)  {
         return !(*this == other);
     }
 };
