@@ -10,26 +10,26 @@ class Complex
 public:
     Complex() : real(0.0), imag(0.0) {}
 
-    Complex(double r) : real(r), imag(0.0) {}
+    Complex(double real) : real(real), imag(0.0) {}
 
     Complex(double r, double i) : real(r), imag(i) {}
 
-    const double getReal()
+    double getReal() const
     {
         return real;
     }
 
-    const double getImag()
+    double getImag() const
     {
         return imag;
     }
 
-    const  double abs()
+   double abs() const
     {
         return sqrt(real * real + imag * imag);
     }
 
-    const Complex conjugate()
+    Complex conjugate() const
     {
         return Complex(real, -imag);
     }
@@ -52,7 +52,8 @@ public:
     const Complex operator/(const Complex& other)
     {
         double denominator = other.real * other.real + other.imag * other.imag;
-        if (denominator == 0) {
+        if (denominator == 0) 
+        {
             throw std::runtime_error("Division by zero");
         }
         return Complex((real * other.real + imag * other.imag) / denominator,
