@@ -1,7 +1,25 @@
 #include <iostream>
 #include "TestFunctions.h"
-int main()
-{
+
+void printComplex(const Complex& num, const std::string& operation) {
+    double real = num.getReal();
+    double imag = num.getImag();
+    std::cout << operation << " = ";
+    if (real == 0 && imag == 0) {
+        std::cout << "0" << std::endl;
+    }
+    else if (real == 0) {
+        std::cout << imag << "i" << std::endl;
+    }
+    else if (imag == 0) {
+        std::cout << real << std::endl;
+    }
+    else {
+        std::cout << real << " + " << imag << "i" << std::endl;
+    }
+}
+
+int main() {
     while (true) {
         bool contin;
         double re = 0.0;
@@ -21,75 +39,32 @@ int main()
         Complex difference = a - b;
         Complex product = a * b;
         Complex quotient;
-        if (sum.getReal() == 0 && sum.getImag()==0 )  std::cout << "a + b = " << 0<< "\n";
-        else
-            if (sum.getReal() == 0)  std::cout << "a + b = " << sum.getImag() << "i\n";
-            else
-                if (sum.getImag() == 0)  std::cout << "a + b = " << sum.getReal()<<"\n";
-                else
-                    std::cout << "a + b = " << sum.getReal() << " + " << sum.getImag() << "i\n";
-        if (difference.getReal() == 0 && difference.getImag() == 0)  std::cout << "a - b = " << 0 << "\n";
-        else
-            if (difference.getReal() == 0)  std::cout << "a - b  = " << difference.getImag() << "i\n";
-            else
-                if (difference.getImag() == 0)  std::cout << "a - b = " << difference.getReal() << "\n";
-                else
-                    std::cout << "a - b = " << difference.getReal() << " + " << difference.getImag() << "i\n";
-        if (product.getReal() == 0 && product.getImag() == 0)  std::cout << "a * b = " << 0 << "\n";
-        else
-            if (product.getReal() == 0)  std::cout << "a * b  = " << product.getImag() << "i\n";
-            else
-                if (product.getImag() == 0)  std::cout << "a *b = " << product.getReal() << "\n";
-                else
-                    std::cout << "a * b = " << product.getReal() << " + " << product.getImag() << "i\n";
-        
 
+        printComplex(sum, "a + b");
+        printComplex(difference, "a - b");
+        printComplex(product, "a * b");
 
         try {
             quotient = a / b;
-            if (quotient.getReal() == 0 && quotient.getImag() == 0)  std::cout << "a / b = " << 0 << "\n";
-            else
-                if (quotient.getReal() == 0)  std::cout << "a / b  = " << quotient.getImag() << "i\n";
-                else
-                    if (quotient.getImag() == 0)  std::cout << "a / b = " << quotient.getReal() << "\n";
-                    else
-                        std::cout << "a / b = " << quotient.getReal() << " + " << quotient.getImag() << "i\n";
+            printComplex(quotient, "a / b");
         }
         catch (const std::runtime_error& e) {
             std::cerr << "Error: " << e.what() << std::endl;
         }
-        if (a==b)
-        std::cout << "a=b true"<<"\n";
-        else std::cout << "a=b false" << "\n";
 
-        Complex conjugate_a = a.conjugate();
-        double a_abs = a.abs();
-        Complex conjugate_b = b.conjugate();
-        double b_abs = b.abs();
+        std::cout << "a == b " << (a == b ? "true" : "false") << std::endl;
 
-        if (conjugate_a.getReal() == 0 && conjugate_a.getImag() == 0)  std::cout << "Conjugate of a = " << 0 << "\n";
-        else
-            if (conjugate_a.getReal() == 0)  std::cout << "Conjugate of a  = " << conjugate_a.getImag() << "i\n";
-            else
-                if (conjugate_a.getImag() == 0)  std::cout << "Conjugate of a = " << conjugate_a.getReal() << "\n";
-                else
-                    std::cout << "Conjugate of a = " << conjugate_a.getReal() << " + " << conjugate_a.getImag() << "i\n";
-        std::cout << "Absolute value of a = " << a_abs << "\n";
+        printComplex(a.conjugate(), "Conjugate of a");
+        std::cout << "Absolute value of a = " << a.abs() << std::endl;
 
-        if (conjugate_b.getReal() == 0 && conjugate_b.getImag() == 0)  std::cout << "Conjugate of b = " << 0 << "\n";
-        else
-            if (conjugate_b.getReal() == 0)  std::cout << "Conjugate of b  = " << conjugate_b.getImag() << "i\n";
-            else
-                if (conjugate_b.getImag() == 0)  std::cout << "Conjugate of b = " << conjugate_b.getReal() << "\n";
-                else
-                    std::cout << "Conjugate of b = " << conjugate_b.getReal() << " + " << conjugate_b.getImag() << "i\n";
-        std::cout << "Absolute value of b = " << b_abs << "\n";
+        printComplex(b.conjugate(), "Conjugate of b");
+        std::cout << "Absolute value of b = " << b.abs() << std::endl;
 
-        std::cout << "Want to repeat? \n";
+        std::cout << "Want to repeat? " << std::endl;
         std::cin >> contin;
         if (contin == 0) break;
     }
     test();
-    
+
     return 0;
 }
