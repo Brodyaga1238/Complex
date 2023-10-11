@@ -6,16 +6,16 @@ void printComplex(const Complex& num, const std::string& operation) {
     double imag = num.getImag();
     std::cout << operation << " = ";
     if (real == 0 && imag == 0) {
-        std::cout << "0" << std::endl;
+        std::cout << "0" << "\n";
     }
     else if (real == 0) {
-        std::cout << imag << "i" << std::endl;
+        std::cout << imag << "i" << "\n";
     }
     else if (imag == 0) {
-        std::cout << real << std::endl;
+        std::cout << real << "\n";
     }
     else {
-        std::cout << real << " + " << imag << "i" << std::endl;
+        std::cout << real << " + " << imag << "i" << "\n";
     }
 }
 
@@ -49,18 +49,18 @@ int main() {
             printComplex(quotient, "a / b");
         }
         catch (const std::runtime_error& e) {
-            std::cerr << "Error: " << e.what() << std::endl;
+            std::cerr << "Error: " << e.what() << "\n";
         }
 
-        std::cout << "a == b " << (a == b ? "true" : "false") << std::endl;
+        std::cout << "a == b " << (a == b ? "true" : "false") << "\n";
 
         printComplex(a.conjugate(), "Conjugate of a");
-        std::cout << "Absolute value of a = " << a.abs() << std::endl;
+        std::cout << "Absolute value of a = " << a.abs() << "\n";
 
         printComplex(b.conjugate(), "Conjugate of b");
-        std::cout << "Absolute value of b = " << b.abs() << std::endl;
+        std::cout << "Absolute value of b = " << b.abs() << "\n";
 
-        std::cout << "Want to repeat? " << std::endl;
+        std::cout << "Want to repeat? " << "\n";
         std::cin >> contin;
         if (contin == 0) break;
     }
