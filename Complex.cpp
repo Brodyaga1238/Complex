@@ -59,6 +59,32 @@ public:
         return Complex((real * other.real + imag * other.imag) / denominator,
             (imag * other.real - real * other.imag) / denominator);
     }
+    Complex& operator++()
+    {
+        real++;
+        imag++;
+        return *this;
+    }
+    Complex operator++(int)
+    {
+        Complex Value(*this);  
+        real++;
+        imag++;
+        return Value;  
+    }
+    Complex& operator--()
+    {
+        real--;
+        imag--;
+        return *this;
+    }
+    Complex operator--(int)
+    {
+        Complex Value(*this);  
+        real--;
+        imag--;
+        return Value;  
+    }
 
     Complex& operator+=(const Complex& other) 
     {

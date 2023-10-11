@@ -113,5 +113,21 @@
                 break;
             }
         }
+        // Тестовый случай 6: Сравнение
+        for (i = 0; i < n; i++) 
+        {
+            double re_a = dis(gen);
+            double im_a = dis(gen);
+
+            Complex c(re_a, im_a);
+            Complex d(-re_a, -im_a);
+
+            if (c!=d) std::cout << "test 5 passed\n";
+            else 
+            {
+                std::cerr << "test 5 failed\n";
+                break;
+            }
+        }
 
     }

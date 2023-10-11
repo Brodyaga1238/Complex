@@ -55,11 +55,18 @@ int main() {
         std::cout << "a == b " << (a == b ? "true" : "false") << "\n";
 
         printComplex(a.conjugate(), "Conjugate of a");
-        std::cout << "Absolute value of a = " << a.abs() << "\n";
+        printComplex(a.abs(), "Absolute value of a");
 
         printComplex(b.conjugate(), "Conjugate of b");
-        std::cout << "Absolute value of b = " << b.abs() << "\n";
-
+        printComplex(b.abs(), "Absolute value of b");
+        b++;
+        printComplex(b, "b++");
+        ++b;
+        printComplex(b, "++b");
+        b--;
+        printComplex(b, "b--");
+        --b;
+        printComplex(b, "--b");
         std::cout << "Want to repeat? " << "\n";
         std::cin >> contin;
         if (contin == 0) break;
