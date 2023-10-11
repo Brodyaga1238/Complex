@@ -122,7 +122,10 @@
             Complex c(re_a, im_a);
             Complex d(-re_a, -im_a);
 
-            if (c!=d) std::cout << "test 5 passed\n";
+            if (c!=d) 
+            {
+               if (i == n - 1) std::cout << "test 6 passed\n";
+            }
             else 
             {
                 std::cerr << "test 5 failed\n";
